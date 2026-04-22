@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Floral Soul — ดอกไม้แทนใจคุณ</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #1a1714;
+            --parchment: #f5f0e8;
+            --cream: #faf7f2;
+            --gold: #b8924a;
+            --gold-light: #d4aa6a;
+            --muted: #7a7068;
+            --border: rgba(184,146,74,0.2);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: 'Noto Sans Thai', sans-serif;
+            background: var(--cream);
+            color: var(--ink);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .shell {
+            max-width: 420px;
+            margin: 0 auto;
+            min-height: 100vh;
+            padding: 1.5rem 1.25rem;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .vine-tl, .vine-br {
+            position: fixed;
+            width: 180px;
+            height: 180px;
+            opacity: 0.06;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .vine-tl { top: 0; left: 0; }
+        .vine-br { bottom: 0; right: 0; transform: rotate(180deg); }
+
+        .site-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.5rem;
+        }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+        .header-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+            margin: 0 1rem;
+        }
+        .chapter-tag {
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .screen { display: none; flex-direction: column; flex-grow: 1; animation: fadeUp 0.45s ease forwards; }
+        .screen.active { display: flex; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* START */
+        .hero-botanical {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .botanical-frame {
+            position: relative;
+            width: 196px;
+            height: 196px;
+            margin-bottom: 2.5rem;
+        }
+        .botanical-ring {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+        }
+        .botanical-ring:nth-child(2) {
+            inset: 14px;
+            border-style: dashed;
+            animation: spin 40s linear infinite;
+        }
+        .botanical-ring:nth-child(3) {
+            inset: 28px;
+            border-color: var(--gold);
+            opacity: 0.25;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .floral-emoji {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            filter: drop-shadow(0 8px 24px rgba(184,146,74,0.18));
+            animation: float 4s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-8px); }
+        }
+
+        .petal-dot {
+            position: absolute;
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--gold-light);
+            opacity: 0.45;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.7rem;
+        }
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--ink);
+            margin-bottom: 0.4rem;
+        }
+        .hero-title em { font-style: italic; color: var(--gold); }
+        .hero-divider {
+            width: 36px; height: 1px;
+            background: var(--gold);
+            margin: 1.1rem auto;
+            opacity: 0.45;
+        }
+        .hero-body {
+            font-size: 0.8rem;
+            line-height: 2;
+            color: var(--muted);
+            max-width: 290px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            background: var(--ink);
+            color: var(--parchment);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .btn-primary:active::before { transform: scaleX(1); }
+        .btn-primary span { position: relative; z-index: 1; }
+
+        .btn-ghost {
+            background: none; border: none;
+            font-family: 'Noto Sans Thai', sans-serif;
+            font-size: 0.75rem;
+            color: var(--muted);
+            cursor: pointer;
+            letter-spacing: 0.05em;
+            padding: 0.75rem;
+            transition: color 0.2s;
+        }
+        .btn-ghost:hover { color: var(--ink); }
+
+        .time-note {
+            font-size: 0.62rem;
+            color: var(--muted);
+            opacity: 0.45;
+            letter-spacing: 0.08em;
+            margin-top: 1rem;
+        }
+
+        /* QUIZ */
+        .quiz-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+        .q-back {
+            background: none; border: none; cursor: pointer;
+            color: var(--muted); font-size: 1.1rem; padding: 0.25rem;
+            transition: color 0.2s; flex-shrink: 0;
+        }
+        .q-back:hover { color: var(--ink); }
+        .progress-track {
+            flex: 1; height: 1px;
+            background: var(--border);
+            position: relative;
+        }
+        .progress-fill {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            background: var(--gold);
+            transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .q-counter {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.82rem;
+            color: var(--muted);
+            flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+
+        .q-category {
+            font-size: 0.58rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.7rem;
+        }
+        .q-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.65rem;
+            font-weight: 300;
+            line-height: 1.4;
+            color: var(--ink);
+            margin-bottom: 2.5rem;
+            min-height: 4.5rem;
+        }
+
+        .options-grid { display: flex; flex-direction: column; gap: 0.7rem; }
+
+        .opt-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            padding: 0.95rem 1.2rem;
+            text-align: left;
+            cursor: pointer;
+            font-family: 'Noto Sans Thai', sans-serif;
+            font-size: 0.83rem;
+            font-weight: 300;
+            color: var(--ink);
+            line-height: 1.55;
+            transition: all 0.22s ease;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateX(-10px);
+            animation: slideIn 0.35s ease forwards;
+        }
+        .opt-btn::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 0;
+            background: var(--parchment);
+            transition: width 0.28s ease;
+            z-index: -1;
+        }
+        .opt-btn::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--gold);
+            transform: scaleY(0);
+            transition: transform 0.22s ease;
+        }
+        .opt-btn:hover::before, .opt-btn:active::before { width: 100%; }
+        .opt-btn:hover::after,  .opt-btn:active::after  { transform: scaleY(1); }
+        .opt-btn:active { border-color: var(--gold); }
+
+        .opt-btn:nth-child(1) { animation-delay: 0.05s; }
+        .opt-btn:nth-child(2) { animation-delay: 0.12s; }
+        .opt-btn:nth-child(3) { animation-delay: 0.19s; }
+        .opt-btn:nth-child(4) { animation-delay: 0.26s; }
+        @keyframes slideIn { to { opacity: 1; transform: translateX(0); } }
+
+        /* RESULT */
+        #result-to-save {
+            background: var(--cream);
+            padding: 2rem;
+        }
+
+        .ornament-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .ornament-row hr { flex: 1; border: none; border-top: 1px solid var(--border); }
+        .ornament-diamond {
+            width: 5px; height: 5px;
+            background: var(--gold);
+            transform: rotate(45deg);
+            opacity: 0.55;
+        }
+
+        .result-badge {
+            font-size: 0.55rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-center { text-align: center; }
+
+        .result-emoji-wrap {
+            display: inline-block;
+            position: relative;
+            margin: 0.5rem 0 1.25rem;
+        }
+        .result-emoji-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -18px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(184,146,74,0.1) 0%, transparent 70%);
+        }
+        .result-emoji { font-size: 5rem; display: block; filter: drop-shadow(0 4px 18px rgba(184,146,74,0.22)); }
+
+        .result-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 0.2rem;
+        }
+        .result-latin {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.82rem;
+            font-style: italic;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .result-desc-box {
+            border: 1px solid var(--border);
+            padding: 1.2rem 1.2rem 1.2rem 1.6rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .result-desc-box::before {
+            content: '❝';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            color: var(--gold);
+            opacity: 0.35;
+            position: absolute;
+            top: 0.4rem; left: 0.65rem;
+        }
+        .result-desc-text {
+            font-size: 0.8rem;
+            line-height: 1.95;
+            color: var(--muted);
+            font-weight: 300;
+        }
+
+        .soulmate-box {
+            background: var(--parchment);
+            padding: 1.2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .soulmate-label {
+            font-size: 0.54rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.7rem;
+        }
+        .soulmate-pair {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-bottom: 0.4rem;
+        }
+        .soulmate-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: var(--ink);
+        }
+        .soulmate-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.78rem;
+            font-style: italic;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .result-footer-txt {
+            font-size: 0.58rem;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            opacity: 0.3;
+            text-align: center;
+            margin-top: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .action-bar {
+            padding-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--ink);
+            color: var(--parchment);
+            padding: 0.7rem 1.4rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            opacity: 0;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 100;
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+
+<svg class="vine-tl" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 170 Q40 100 80 80 Q120 60 150 20" stroke="#1a1714" stroke-width="1.5" fill="none"/>
+    <circle cx="40" cy="140" r="8" stroke="#b8924a" stroke-width="1" fill="none"/>
+    <circle cx="80" cy="80" r="12" stroke="#b8924a" stroke-width="1" fill="none"/>
+    <circle cx="130" cy="40" r="6" stroke="#b8924a" stroke-width="1" fill="none"/>
+    <path d="M80 80 Q60 50 50 20" stroke="#1a1714" stroke-width="1" fill="none" stroke-dasharray="3,4"/>
+    <path d="M40 140 Q20 120 15 100" stroke="#1a1714" stroke-width="1" fill="none" stroke-dasharray="3,4"/>
+</svg>
+<svg class="vine-br" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 170 Q40 100 80 80 Q120 60 150 20" stroke="#1a1714" stroke-width="1.5" fill="none"/>
+    <circle cx="40" cy="140" r="8" stroke="#b8924a" stroke-width="1" fill="none"/>
+    <circle cx="80" cy="80" r="12" stroke="#b8924a" stroke-width="1" fill="none"/>
+    <circle cx="130" cy="40" r="6" stroke="#b8924a" stroke-width="1" fill="none"/>
+</svg>
+
+<div class="shell">
+    <header class="site-header">
+        <span class="logo">Floral Soul</span>
+        <div class="header-line"></div>
+        <span class="chapter-tag">Self Discovery</span>
+    </header>
+
+    <!-- START -->
+    <div class="screen active" id="screen-start">
+        <div class="hero-botanical">
+            <div class="botanical-frame">
+                <div class="botanical-ring"></div>
+                <div class="botanical-ring"></div>
+                <div class="botanical-ring"></div>
+                <div class="floral-emoji">🌸</div>
+                <div class="petal-dot" style="top:7px;left:50%;transform:translateX(-50%)"></div>
+                <div class="petal-dot" style="bottom:7px;left:50%;transform:translateX(-50%)"></div>
+                <div class="petal-dot" style="left:7px;top:50%;transform:translateY(-50%)"></div>
+                <div class="petal-dot" style="right:7px;top:50%;transform:translateY(-50%)"></div>
+            </div>
+
+            <p class="hero-eyebrow">Botanical Psychology</p>
+            <h1 class="hero-title">Floral<br><em>Soul</em></h1>
+            <div class="hero-divider"></div>
+            <p class="hero-body">
+                จิตวิญญาณของคุณสะท้อนผ่านดอกไม้ชนิดใด<br>
+                ค้นพบตัวตนที่แท้จริงผ่าน 12 คำถาม
+            </p>
+
+            <button class="btn-primary" onclick="startQuiz()">
+                <span>เริ่มต้นค้นหา</span>
+            </button>
+            <p class="time-note">ใช้เวลาประมาณ 2 นาที · ไม่มีคำตอบผิดหรือถูก</p>
+        </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="screen" id="screen-quiz">
+        <div class="quiz-header">
+            <button class="q-back" onclick="goBack()">←</button>
+            <div class="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <span class="q-counter" id="q-counter">1 / 12</span>
+        </div>
+        <p class="q-category" id="q-cat">Emotion</p>
+        <h2 class="q-text" id="q-text"></h2>
+        <div class="options-grid" id="options-box"></div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="screen" id="screen-result">
+        <div id="result-to-save">
+            <div class="ornament-row"><hr><div class="ornament-diamond"></div><hr></div>
+            <p class="result-badge">Your Spirit Flower</p>
+
+            <div class="result-center">
+                <div class="result-emoji-wrap">
+                    <span class="result-emoji" id="res-emoji">🌻</span>
+                </div>
+                <h2 class="result-name" id="res-name">ดอกทานตะวัน</h2>
+                <p class="result-latin" id="res-latin">Helianthus annuus</p>
+            </div>
+
+            <div class="result-desc-box">
+                <p class="result-desc-text" id="res-desc"></p>
+            </div>
+
+            <div class="soulmate-box">
+                <p class="soulmate-label">Soulmate Flower</p>
+                <div class="soulmate-pair">
+                    <span id="match-emoji" style="font-size:1.4rem">🪻</span>
+                    <span class="soulmate-name" id="match-name">ลาเวนเดอร์</span>
+                </div>
+                <p class="soulmate-quote" id="match-quote">"..."</p>
+            </div>
+
+            <div class="ornament-row" style="margin-top:1rem"><hr><div class="ornament-diamond"></div><hr></div>
+            <p class="result-footer-txt" id="result-url">floral-soul.github.io</p>
+        </div>
+
+        <div class="action-bar">
+            <button class="btn-primary" id="save-btn" onclick="saveImage()">
+                <span>บันทึกและแชร์ผลลัพธ์</span>
+            </button>
+            <button class="btn-ghost" onclick="restartQuiz()">ลองทำใหม่อีกครั้ง</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const categories = ["Emotion & Nature","Self Expression","Personality","Social Style","Romance","Leisure","Safe Space","Intuition","Empathy","Values","Aesthetic","Life Season"];
+
+const questions = [
+    { q: "บรรยากาศเช้าวันเสาร์ที่คุณชอบที่สุด?", opts: [{t:"แสงแดดส่องผ่านหน้าต่าง", s:"sun"}, {t:"เสียงฝนตกกระทบหลังคา", s:"rose"}, {t:"กลิ่นดินและใบไม้หลังฝน", s:"lav"}, {t:"ความเงียบสงบในห้องที่จัดระเบียบเรียบร้อย", s:"lily"}] },
+    { q: "เวลาคุณมีเรื่องกังวลใจ คุณมักจะทำอะไร?", opts: [{t:"คุยกับเพื่อนที่ไว้ใจ", s:"sun"}, {t:"เขียนบันทึกหรือวาดรูป", s:"rose"}, {t:"นอนหลับหรือฟังเพลงเบาๆ", s:"lav"}, {t:"หาที่เงียบๆ คิดทบทวนคนเดียว", s:"lily"}] },
+    { q: "ถ้าคุณเป็นงานศิลปะ คุณจะเป็นแบบไหน?", opts: [{t:"ภาพวาดสีน้ำมันที่สีสันสดใส", s:"sun"}, {t:"ภาพสเก็ตช์ซับซ้อนแต่มีเสน่ห์", s:"rose"}, {t:"ภาพถ่ายฟิล์มแนวฟุ้งๆ ฝันๆ", s:"lav"}, {t:"ภาพวาดลายเส้นเรียบง่ายแต่มั่นคง", s:"lily"}] },
+    { q: "คำชมแบบไหนที่ทำให้คุณยิ้มได้กว้างที่สุด?", opts: [{t:"คุณเป็นพลังงานบวกให้ทุกคนเลย", s:"sun"}, {t:"คุณเป็นคนเก่งและน่าทึ่งมาก", s:"rose"}, {t:"อยู่กับคุณแล้วรู้สึกสบายใจจัง", s:"lav"}, {t:"คุณเป็นคนซื่อสัตย์และพึ่งพาได้เสมอ", s:"lily"}] },
+    { q: "เวลาตกหลุมรักใครสักคน คุณมักจะ...", opts: [{t:"แสดงออกชัดเจนและร่าเริง", s:"sun"}, {t:"แอบสังเกตและดูแลอยู่ห่างๆ", s:"rose"}, {t:"ให้กำลังใจและคอยซัพพอร์ต", s:"lav"}, {t:"มั่นคงและรักเดียวใจเดียว", s:"lily"}] },
+    { q: "หนังประเภทไหนที่คุณเปิดดูซ้ำได้บ่อยที่สุด?", opts: [{t:"Comedy หรือหนังฟีลกู๊ด", s:"sun"}, {t:"Drama เข้มข้นหรือหนังรางวัล", s:"rose"}, {t:"Fantasy หรือหนังรักโรแมนติก", s:"lav"}, {t:"Documentary หรือหนังสร้างแรงบันดาลใจ", s:"lily"}] },
+    { q: "พื้นที่ปลอดภัย (Safe Zone) ของคุณคือที่ไหน?", opts: [{t:"คาเฟ่ที่มีคนพลุกพล่านพอประมาณ", s:"sun"}, {t:"ห้องส่วนตัวที่มีของรักของหวง", s:"rose"}, {t:"สวนสาธารณะที่มีลมพัดเย็นๆ", s:"lav"}, {t:"ห้องสมุดหรือมุมทำงานเงียบๆ", s:"lily"}] },
+    { q: "คุณตัดสินใจซื้อของชิ้นหนึ่งเพราะอะไร?", opts: [{t:"มันทำให้คุณรู้สึกตื่นเต้น", s:"sun"}, {t:"มันแสดงถึงรสนิยมที่เป็นคุณ", s:"rose"}, {t:"มันมีกลิ่นหอมหรือสัมผัสที่ดี", s:"lav"}, {t:"มันคุ้มค่าและใช้งานได้จริง", s:"lily"}] },
+    { q: "เวลาเพื่อนร้องไห้ คุณคือคนที่...", opts: [{t:"ชวนไปหาของกินอร่อยๆ ให้ลืมเศร้า", s:"sun"}, {t:"ให้คำแนะนำแบบตรงไปตรงมา", s:"rose"}, {t:"นั่งเงียบๆ เป็นเพื่อนและให้กอด", s:"lav"}, {t:"ช่วยวางแผนแก้ปัญหาที่เกิดขึ้น", s:"lily"}] },
+    { q: "เป้าหมายสูงสุดในชีวิตตอนนี้คือ?", opts: [{t:"การได้ใช้ชีวิตให้สนุกทุกวัน", s:"sun"}, {t:"ความสำเร็จที่มีคนยอมรับ", s:"rose"}, {t:"ความสงบสุขทางใจ", s:"lav"}, {t:"ความมั่นคงเพื่อคนข้างหลัง", s:"lily"}] },
+    { q: "คุณชอบสีโทนไหนมากที่สุด?", opts: [{t:"โทนอุ่น (เหลือง, ส้ม, แดง)", s:"sun"}, {t:"โทนเข้ม (ดำ, แดงก่ำ, น้ำเงิน)", s:"rose"}, {t:"โทนพาสเทล (ม่วงอ่อน, ฟ้าอ่อน)", s:"lav"}, {t:"โทนธรรมชาติ (ขาว, เขียว, ครีม)", s:"lily"}] },
+    { q: "ถ้าเปรียบชีวิตเป็นฤดูกาล คุณคือฤดูอะไร?", opts: [{t:"ฤดูร้อนที่สดใส", s:"sun"}, {t:"ฤดูใบไม้ร่วงที่น่าค้นหา", s:"rose"}, {t:"ฤดูใบไม้ผลิที่อ่อนโยน", s:"lav"}, {t:"ฤดูหนาวที่นิ่งสงบ", s:"lily"}] }
+];
+
+const results = {
+    sun:  { name:"ดอกทานตะวัน", latin:"Helianthus annuus", emoji:"🌻", desc:"คุณคือศูนย์รวมของพลังงานบวกและรอยยิ้ม ความสดใสของคุณมักจะทำให้คนรอบข้างรู้สึกมีความหวัง คุณตรงไปตรงมาและซื่อตรงต่อความรู้สึกตัวเอง เหมือนทานตะวันที่หันหน้าเข้าหาแสงแดดเสมอโดยไม่ลังเล", match:{emoji:"🪻", name:"ลาเวนเดอร์", desc:"ความสงบของเขาจะช่วยโอบกอดความสดใสของคุณให้มั่นคงขึ้น"} },
+    rose: { name:"ดอกกุหลาบ", latin:"Rosa centifolia", emoji:"🌹", desc:"คุณมีความซับซ้อน น่าค้นหา และมีพลังดึงดูดอย่างประหลาด คุณเด็ดเดี่ยวและพร้อมจะปกป้องตัวเองและคนที่รัก แต่ภายใต้ความแข็งแกร่งนั้น คุณมีความรักที่ลึกซึ้งและงดงามที่สุด", match:{emoji:"🌼", name:"เดซี่", desc:"ความเรียบง่ายของเขาจะช่วยลดทอนความเหนื่อยล้าในใจคุณ"} },
+    lav:  { name:"ลาเวนเดอร์", latin:"Lavandula angustifolia", emoji:"🪻", desc:"คุณคือความสบายใจของทุกคน ความอ่อนน้อมและเห็นอกเห็นใจผู้อื่นคือเสน่ห์ของคุณ คุณชอบความสงบและมักจะเยียวยาบาดแผลในใจคนรอบข้างด้วยคำพูดนุ่มนวล คุณคือจิตวิญญาณแห่งการพักผ่อน", match:{emoji:"🌻", name:"ทานตะวัน", desc:"ความร่าเริงของเขาจะช่วยเพิ่มสีสันให้โลกที่เงียบสงบของคุณ"} },
+    lily: { name:"ลิลลี่ขาว", latin:"Lilium candidum", emoji:"🪷", desc:"คุณมีความละเมียดละไม รักความสะอาด และมีความคิดที่บริสุทธิ์ คุณให้ความสำคัญกับความถูกต้องและความเป็นระเบียบ ชีวิตของคุณมักจะมีเป้าหมายที่ชัดเจนและมุ่งมั่นทำให้สำเร็จอย่างสง่างาม", match:{emoji:"🌹", name:"กุหลาบ", desc:"ความร้อนแรงของเขาจะช่วยกระตุ้นความหลงใหลในชีวิตให้คุณ"} }
+};
+
+let idx = 0, scores = {sun:0,rose:0,lav:0,lily:0}, history = [];
+
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    const el = document.getElementById(id);
+    el.style.animation = 'none';
+    el.classList.add('active');
+    requestAnimationFrame(() => { el.style.animation = ''; });
+}
+
+function startQuiz() {
+    idx = 0; scores = {sun:0,rose:0,lav:0,lily:0}; history = [];
+    showScreen('screen-quiz');
+    renderQ();
+}
+
+function restartQuiz() { startQuiz(); }
+
+function goBack() {
+    if (history.length === 0) { showScreen('screen-start'); return; }
+    scores[history.pop().s]--;
+    idx--;
+    renderQ();
+}
+
+function renderQ() {
+    const d = questions[idx];
+    document.getElementById('q-cat').textContent = categories[idx] || '';
+    document.getElementById('q-text').textContent = d.q;
+    document.getElementById('q-counter').textContent = `${idx+1} / ${questions.length}`;
+    document.getElementById('progress-fill').style.width = `${(idx/questions.length)*100}%`;
+
+    const box = document.getElementById('options-box');
+    box.innerHTML = '';
+    d.opts.forEach(opt => {
+        const b = document.createElement('button');
+        b.className = 'opt-btn';
+        b.textContent = opt.t;
+        b.onclick = () => { scores[opt.s]++; history.push({s:opt.s}); idx++; idx < questions.length ? renderQ() : showResult(); };
+        box.appendChild(b);
+    });
+}
+
+function showResult() {
+    const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+    const r = results[winner];
+    document.getElementById('res-emoji').textContent = r.emoji;
+    document.getElementById('res-name').textContent = r.name;
+    document.getElementById('res-latin').textContent = r.latin;
+    document.getElementById('res-desc').textContent = r.desc;
+    document.getElementById('match-emoji').textContent = r.match.emoji;
+    document.getElementById('match-name').textContent = r.match.name;
+    document.getElementById('match-quote').textContent = `"${r.match.desc}"`;
+    showScreen('screen-result');
+}
+
+async function saveImage() {
+    const btn = document.getElementById('save-btn');
+    btn.querySelector('span').textContent = 'กำลังสร้างรูปภาพ...';
+    btn.disabled = true;
+    try {
+        const canvas = await html2canvas(document.getElementById('result-to-save'), {
+            backgroundColor: '#faf7f2', scale: 3, useCORS: true, logging: false
+        });
+        const a = document.createElement('a');
+        a.download = 'floral-soul.png';
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+        showToast('✓  บันทึกรูปภาพเรียบร้อยแล้ว');
+    } catch(e) { console.error(e); }
+    finally {
+        btn.querySelector('span').textContent = 'บันทึกและแชร์ผลลัพธ์';
+        btn.disabled = false;
+    }
+}
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
