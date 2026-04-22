@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Floral Soul — ดอกไม้แทนใจคุณ</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Noto+Sans+Thai:wght@300;400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -22,7 +20,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
-            font-family: 'Noto Sans Thai', sans-serif;
+            font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
             background: var(--cream);
             color: var(--ink);
             min-height: 100vh;
@@ -68,7 +66,7 @@
             padding-bottom: 1.5rem;
         }
         .logo {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 1.05rem;
             font-weight: 400;
             letter-spacing: 0.18em;
@@ -155,7 +153,7 @@
         }
 
         .hero-eyebrow {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 0.68rem;
             letter-spacing: 0.35em;
             text-transform: uppercase;
@@ -163,7 +161,7 @@
             margin-bottom: 0.7rem;
         }
         .hero-title {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 3rem;
             font-weight: 300;
             line-height: 1.1;
@@ -196,7 +194,7 @@
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 1rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
@@ -215,7 +213,7 @@
 
         .btn-ghost {
             background: none; border: none;
-            font-family: 'Noto Sans Thai', sans-serif;
+            font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
             font-size: 0.75rem;
             color: var(--muted);
             cursor: pointer;
@@ -257,7 +255,7 @@
             transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
         }
         .q-counter {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 0.82rem;
             color: var(--muted);
             flex-shrink: 0;
@@ -272,7 +270,7 @@
             margin-bottom: 0.7rem;
         }
         .q-text {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 1.65rem;
             font-weight: 300;
             line-height: 1.4;
@@ -289,7 +287,7 @@
             padding: 0.95rem 1.2rem;
             text-align: left;
             cursor: pointer;
-            font-family: 'Noto Sans Thai', sans-serif;
+            font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
             font-size: 0.83rem;
             font-weight: 300;
             color: var(--ink);
@@ -375,14 +373,14 @@
         .result-emoji { font-size: 5rem; display: block; filter: drop-shadow(0 4px 18px rgba(184,146,74,0.22)); }
 
         .result-name {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 1.9rem;
             font-weight: 400;
             color: var(--ink);
             margin-bottom: 0.2rem;
         }
         .result-latin {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 0.82rem;
             font-style: italic;
             color: var(--gold);
@@ -397,7 +395,7 @@
         }
         .result-desc-box::before {
             content: '❝';
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 1.4rem;
             color: var(--gold);
             opacity: 0.35;
@@ -432,12 +430,12 @@
             margin-bottom: 0.4rem;
         }
         .soulmate-name {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 1.05rem;
             color: var(--ink);
         }
         .soulmate-quote {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: Georgia, 'Times New Roman', serif;
             font-size: 0.78rem;
             font-style: italic;
             color: var(--muted);
@@ -504,7 +502,6 @@
         <span class="chapter-tag">Self Discovery</span>
     </header>
 
-    <!-- START -->
     <div class="screen active" id="screen-start">
         <div class="hero-botanical">
             <div class="botanical-frame">
@@ -529,11 +526,10 @@
             <button class="btn-primary" onclick="startQuiz()">
                 <span>เริ่มต้นค้นหา</span>
             </button>
-            <p class="time-note">ใช้เวลาประมาณ 2 นาที · ไม่มีคำตอบผิดหรือถูก</p>
+            <p class="time-note">ใช้เวลาประมาณ 2 นาที · เข้าใจตัวเองมากขึ้น</p>
         </div>
     </div>
 
-    <!-- QUIZ -->
     <div class="screen" id="screen-quiz">
         <div class="quiz-header">
             <button class="q-back" onclick="goBack()">←</button>
@@ -547,7 +543,6 @@
         <div class="options-grid" id="options-box"></div>
     </div>
 
-    <!-- RESULT -->
     <div class="screen" id="screen-result">
         <div id="result-to-save">
             <div class="ornament-row"><hr><div class="ornament-diamond"></div><hr></div>
@@ -575,7 +570,7 @@
             </div>
 
             <div class="ornament-row" style="margin-top:1rem"><hr><div class="ornament-diamond"></div><hr></div>
-            <p class="result-footer-txt" id="result-url">floral-soul.github.io</p>
+            <p class="result-footer-txt">Discover your floral soul</p>
         </div>
 
         <div class="action-bar">
@@ -590,31 +585,35 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const categories = ["Emotion & Nature","Self Expression","Personality","Social Style","Romance","Leisure","Safe Space","Intuition","Empathy","Values","Aesthetic","Life Season"];
+const categories = ["Ambient","Social Energy","Inner Self","Affirmation","Deep Connection","Storytelling","Sanctuary","Value","Compassion","Life Vision","Color Palette","Seasons"];
 
 const questions = [
-    { q: "บรรยากาศเช้าวันเสาร์ที่คุณชอบที่สุด?", opts: [{t:"แสงแดดส่องผ่านหน้าต่าง", s:"sun"}, {t:"เสียงฝนตกกระทบหลังคา", s:"rose"}, {t:"กลิ่นดินและใบไม้หลังฝน", s:"lav"}, {t:"ความเงียบสงบในห้องที่จัดระเบียบเรียบร้อย", s:"lily"}] },
-    { q: "เวลาคุณมีเรื่องกังวลใจ คุณมักจะทำอะไร?", opts: [{t:"คุยกับเพื่อนที่ไว้ใจ", s:"sun"}, {t:"เขียนบันทึกหรือวาดรูป", s:"rose"}, {t:"นอนหลับหรือฟังเพลงเบาๆ", s:"lav"}, {t:"หาที่เงียบๆ คิดทบทวนคนเดียว", s:"lily"}] },
-    { q: "ถ้าคุณเป็นงานศิลปะ คุณจะเป็นแบบไหน?", opts: [{t:"ภาพวาดสีน้ำมันที่สีสันสดใส", s:"sun"}, {t:"ภาพสเก็ตช์ซับซ้อนแต่มีเสน่ห์", s:"rose"}, {t:"ภาพถ่ายฟิล์มแนวฟุ้งๆ ฝันๆ", s:"lav"}, {t:"ภาพวาดลายเส้นเรียบง่ายแต่มั่นคง", s:"lily"}] },
-    { q: "คำชมแบบไหนที่ทำให้คุณยิ้มได้กว้างที่สุด?", opts: [{t:"คุณเป็นพลังงานบวกให้ทุกคนเลย", s:"sun"}, {t:"คุณเป็นคนเก่งและน่าทึ่งมาก", s:"rose"}, {t:"อยู่กับคุณแล้วรู้สึกสบายใจจัง", s:"lav"}, {t:"คุณเป็นคนซื่อสัตย์และพึ่งพาได้เสมอ", s:"lily"}] },
-    { q: "เวลาตกหลุมรักใครสักคน คุณมักจะ...", opts: [{t:"แสดงออกชัดเจนและร่าเริง", s:"sun"}, {t:"แอบสังเกตและดูแลอยู่ห่างๆ", s:"rose"}, {t:"ให้กำลังใจและคอยซัพพอร์ต", s:"lav"}, {t:"มั่นคงและรักเดียวใจเดียว", s:"lily"}] },
-    { q: "หนังประเภทไหนที่คุณเปิดดูซ้ำได้บ่อยที่สุด?", opts: [{t:"Comedy หรือหนังฟีลกู๊ด", s:"sun"}, {t:"Drama เข้มข้นหรือหนังรางวัล", s:"rose"}, {t:"Fantasy หรือหนังรักโรแมนติก", s:"lav"}, {t:"Documentary หรือหนังสร้างแรงบันดาลใจ", s:"lily"}] },
-    { q: "พื้นที่ปลอดภัย (Safe Zone) ของคุณคือที่ไหน?", opts: [{t:"คาเฟ่ที่มีคนพลุกพล่านพอประมาณ", s:"sun"}, {t:"ห้องส่วนตัวที่มีของรักของหวง", s:"rose"}, {t:"สวนสาธารณะที่มีลมพัดเย็นๆ", s:"lav"}, {t:"ห้องสมุดหรือมุมทำงานเงียบๆ", s:"lily"}] },
-    { q: "คุณตัดสินใจซื้อของชิ้นหนึ่งเพราะอะไร?", opts: [{t:"มันทำให้คุณรู้สึกตื่นเต้น", s:"sun"}, {t:"มันแสดงถึงรสนิยมที่เป็นคุณ", s:"rose"}, {t:"มันมีกลิ่นหอมหรือสัมผัสที่ดี", s:"lav"}, {t:"มันคุ้มค่าและใช้งานได้จริง", s:"lily"}] },
-    { q: "เวลาเพื่อนร้องไห้ คุณคือคนที่...", opts: [{t:"ชวนไปหาของกินอร่อยๆ ให้ลืมเศร้า", s:"sun"}, {t:"ให้คำแนะนำแบบตรงไปตรงมา", s:"rose"}, {t:"นั่งเงียบๆ เป็นเพื่อนและให้กอด", s:"lav"}, {t:"ช่วยวางแผนแก้ปัญหาที่เกิดขึ้น", s:"lily"}] },
-    { q: "เป้าหมายสูงสุดในชีวิตตอนนี้คือ?", opts: [{t:"การได้ใช้ชีวิตให้สนุกทุกวัน", s:"sun"}, {t:"ความสำเร็จที่มีคนยอมรับ", s:"rose"}, {t:"ความสงบสุขทางใจ", s:"lav"}, {t:"ความมั่นคงเพื่อคนข้างหลัง", s:"lily"}] },
-    { q: "คุณชอบสีโทนไหนมากที่สุด?", opts: [{t:"โทนอุ่น (เหลือง, ส้ม, แดง)", s:"sun"}, {t:"โทนเข้ม (ดำ, แดงก่ำ, น้ำเงิน)", s:"rose"}, {t:"โทนพาสเทล (ม่วงอ่อน, ฟ้าอ่อน)", s:"lav"}, {t:"โทนธรรมชาติ (ขาว, เขียว, ครีม)", s:"lily"}] },
-    { q: "ถ้าเปรียบชีวิตเป็นฤดูกาล คุณคือฤดูอะไร?", opts: [{t:"ฤดูร้อนที่สดใส", s:"sun"}, {t:"ฤดูใบไม้ร่วงที่น่าค้นหา", s:"rose"}, {t:"ฤดูใบไม้ผลิที่อ่อนโยน", s:"lav"}, {t:"ฤดูหนาวที่นิ่งสงบ", s:"lily"}] }
+    { q: "เช้าวันหยุดที่สมบูรณ์แบบสำหรับคุณเป็นอย่างไร?", opts: [{t:"แสงแดดอ่อนๆ และกาแฟหนึ่งแก้ว", s:"sun"}, {t:"เสียงฝนตกเบาๆ กับหนังสือเล่มโปรด", s:"rose"}, {t:"เดินเล่นในสวนที่มีลมพัดเย็น", s:"lav"}, {t:"จัดระเบียบห้องให้สะอาดสะอ้าน", s:"lily"}, {t:"วิ่งเล่นกับสัตว์เลี้ยงท่ามกลางธรรมชาติ", s:"daisy"}, {t:"นั่งมองท้องฟ้าเปลี่ยนสีในมุมสงบ", s:"hydra"}] },
+    { q: "เมื่อต้องเจอเรื่องที่ทำให้ไม่สบายใจ คุณมักจะ...", opts: [{t:"คุยกับเพื่อนเพื่อระบายพลังงาน", s:"sun"}, {t:"เก็บตัวอยู่เงียบๆ เพื่อตกตะกอน", s:"orchid"}, {t:"ออกไปหาอะไรอร่อยๆ กินให้ลืม", s:"tulip"}, {t:"ทบทวนความผิดพลาดและวางแผนใหม่", s:"lily"}, {t:"หาที่พึ่งพาทางใจจากคนที่สบายใจ", s:"lav"}, {t:"จดบันทึกความรู้สึกออกมาเป็นตัวอักษร", s:"rose"}] },
+    { q: "ถ้าเปรียบตัวคุณเป็นผลงานศิลปะ คุณคือ?", opts: [{t:"ภาพวาดสีน้ำมันที่สีสันสดจัดจ้าน", s:"sun"}, {t:"รูปปั้นที่ดูแข็งแกร่งแต่ละเอียดอ่อน", s:"rose"}, {t:"ภาพสเก็ตช์ด้วยถ่านที่ดูจริงใจ", s:"tulip"}, {t:"งานคราฟต์ที่ประณีตและตั้งใจ", s:"lily"}, {t:"ภาพวาดสีน้ำที่ดูฟุ้งฝันและอ่อนโยน", s:"hydra"}, {t:"งานศิลปะนามธรรมที่น่าค้นหา", s:"orchid"}] },
+    { q: "คำชมใดที่คุณรู้สึกว่ามันตรงใจคุณที่สุด?", opts: [{t:"คุณคือพลังบวกของกลุ่มเสมอ", s:"sun"}, {t:"คุณเป็นคนที่มีสไตล์และเท่มาก", s:"rose"}, {t:"อยู่กับคุณแล้วรู้สึกปลอดภัยจัง", s:"lav"}, {t:"คุณเป็นคนที่พึ่งพาได้และมั่นคง", s:"lily"}, {t:"คุณช่างสดใสและน่ารักเหลือเกิน", s:"daisy"}, {t:"คุณมีความคิดที่ลึกซึ้งและไม่เหมือนใคร", s:"orchid"}] },
+    { q: "ความรักในมุมมองของคุณคืออะไร?", opts: [{t:"การได้ผจญภัยและสนุกไปด้วยกัน", s:"sun"}, {t:"ความหลงใหลที่รุ่มร้อนและมั่นคง", s:"rose"}, {t:"การเป็นพื้นที่ปลอดภัยให้กันและกัน", s:"lav"}, {t:"ความซื่อสัตย์และการร่วมสร้างชีวิต", s:"lily"}, {t:"มิตรภาพที่สวยงามและเรียบง่าย", s:"daisy"}, {t:"ความเข้าใจโดยไม่ต้องเอ่ยคำพูด", s:"hydra"}] },
+    { q: "สื่อที่คุณชอบเสพมากที่สุดในช่วงนี้?", opts: [{t:"หนังตลกที่ทำให้หัวเราะออกมาดังๆ", s:"sun"}, {t:"หนังดราม่าสะท้อนสังคมเข้มข้น", s:"rose"}, {t:"พอดแคสต์พัฒนาตัวเองและจิตวิญญาณ", s:"orchid"}, {t:"สารคดีเกี่ยวกับประวัติศาสตร์หรือวิชาการ", s:"lily"}, {t:"คลิปวิดีโอสัตว์โลกที่ดูแล้วยิ้มได้", s:"daisy"}, {t:"นิยายรักแนวฟีลกู๊ดแสนอบอุ่น", s:"tulip"}] },
+    { q: "พื้นที่แบบไหนที่คุณรู้สึกเป็นตัวเองที่สุด?", opts: [{t:"ปาร์ตี้ที่มีเสียงหัวเราะและผู้คน", s:"sun"}, {t:"แกลเลอรีศิลปะที่จัดแสดงงานล้ำสมัย", s:"orchid"}, {t:"สวนดอกไม้ที่บานสะพรั่งหลากสี", s:"hydra"}, {t:"ห้องทำงานที่เงียบสงบและเป็นส่วนตัว", s:"lily"}, {t:"ทุ่งหญ้ากว้างใหญ่ที่มองเห็นเส้นขอบฟ้า", s:"daisy"}, {t:"ริมทะเลในคืนที่มีแสงจันทร์", s:"tulip"}] },
+    { q: "คุณตัดสินใจซื้อเสื้อผ้าสักชุดเพราะเหตุผลใด?", opts: [{t:"มันเด่นสะดุดตาและทำให้มั่นใจ", s:"sun"}, {t:"มันดูเรียบหรูและดูดีมีระดับ", s:"rose"}, {t:"มันใส่สบายและเนื้อผ้าดีเยี่ยม", s:"lav"}, {t:"มันคุ้มค่าและใส่ได้หลายโอกาส", s:"lily"}, {t:"มันมีลวดลายน่ารักที่เห็นแล้วถูกใจ", s:"daisy"}, {t:"มันมีเอกลักษณ์ที่ไม่มีใครเหมือน", s:"orchid"}] },
+    { q: "คุณอยากให้คนจดจำคุณในฐานะคนแบบไหน?", opts: [{t:"คนที่นำความร่าเริงมาสู่ผู้คน", s:"sun"}, {t:"คนที่กล้าหาญและทำตามความฝัน", s:"rose"}, {t:"คนที่รับฟังและเข้าใจโลกอย่างถ่องแท้", s:"orchid"}, {t:"คนที่เก่งกาจและมีความรับผิดชอบ", s:"lily"}, {t:"คนที่ใจดีและเข้าถึงได้ง่าย", s:"daisy"}, {t:"คนที่อ่อนโยนและปรับตัวได้เก่ง", s:"hydra"}] },
+    { q: "เป้าหมายในชีวิตที่คุณให้ความสำคัญที่สุด?", opts: [{t:"การได้เดินทางรอบโลกและใช้ชีวิต", s:"sun"}, {t:"ความสำเร็จที่มั่นคงและมีชื่อเสียง", s:"rose"}, {t:"การค้นพบความหมายที่แท้จริงของใจ", s:"orchid"}, {t:"การสร้างครอบครัวหรือรากฐานที่แข็งแรง", s:"lily"}, {t:"การได้ทำสิ่งที่ชอบและมีความสุขเล็กๆ", s:"daisy"}, {t:"การได้ช่วยเหลือและเยียวยาผู้คน", s:"hydra"}] },
+    { q: "สีที่คุณเลือกมาเป็นพื้นหลังชีวิตตอนนี้?", opts: [{t:"สีส้มทองเหมือนแสงอาทิตย์", s:"sun"}, {t:"สีแดงเข้มเหมือนไวน์รสเลิศ", s:"rose"}, {t:"สีม่วงอ่อนเหมือนทุ่งลาเวนเดอร์", s:"lav"}, {t:"สีขาวบริสุทธิ์เหมือนผ้าลินิน", s:"lily"}, {t:"สีเหลืองสดใสเหมือนลูกไก่", s:"daisy"}, {t:"สีน้ำเงินนิ่งสงบเหมือนก้นบึ้งทะเล", s:"orchid"}] },
+    { q: "หากชีวิตคือฤดูกาล คุณอยากติดอยู่ในฤดูไหน?", opts: [{t:"ฤดูร้อนที่มีกิจกรรมมากมาย", s:"sun"}, {t:"ฤดูใบไม้ร่วงที่เต็มไปด้วยอารมณ์", s:"rose"}, {t:"ฤดูใบไม้ผลิที่ทุกอย่างเริ่มเบ่งบาน", s:"daisy"}, {t:"ฤดูหนาวที่ขาวโพลนและเงียบสงัด", s:"lily"}, {t:"ช่วงเวลาที่ฝนตกพรำๆ ดูเย็นฉ่ำ", s:"hydra"}, {t:"ช่วงรอยต่อฤดูกาลที่คาดเดาไม่ได้", s:"orchid"}] }
 ];
 
 const results = {
     sun:  { name:"ดอกทานตะวัน", latin:"Helianthus annuus", emoji:"🌻", desc:"คุณคือศูนย์รวมของพลังงานบวกและรอยยิ้ม ความสดใสของคุณมักจะทำให้คนรอบข้างรู้สึกมีความหวัง คุณตรงไปตรงมาและซื่อตรงต่อความรู้สึกตัวเอง เหมือนทานตะวันที่หันหน้าเข้าหาแสงแดดเสมอโดยไม่ลังเล", match:{emoji:"🪻", name:"ลาเวนเดอร์", desc:"ความสงบของเขาจะช่วยโอบกอดความสดใสของคุณให้มั่นคงขึ้น"} },
     rose: { name:"ดอกกุหลาบ", latin:"Rosa centifolia", emoji:"🌹", desc:"คุณมีความซับซ้อน น่าค้นหา และมีพลังดึงดูดอย่างประหลาด คุณเด็ดเดี่ยวและพร้อมจะปกป้องตัวเองและคนที่รัก แต่ภายใต้ความแข็งแกร่งนั้น คุณมีความรักที่ลึกซึ้งและงดงามที่สุด", match:{emoji:"🌼", name:"เดซี่", desc:"ความเรียบง่ายของเขาจะช่วยลดทอนความเหนื่อยล้าในใจคุณ"} },
     lav:  { name:"ลาเวนเดอร์", latin:"Lavandula angustifolia", emoji:"🪻", desc:"คุณคือความสบายใจของทุกคน ความอ่อนน้อมและเห็นอกเห็นใจผู้อื่นคือเสน่ห์ของคุณ คุณชอบความสงบและมักจะเยียวยาบาดแผลในใจคนรอบข้างด้วยคำพูดนุ่มนวล คุณคือจิตวิญญาณแห่งการพักผ่อน", match:{emoji:"🌻", name:"ทานตะวัน", desc:"ความร่าเริงของเขาจะช่วยเพิ่มสีสันให้โลกที่เงียบสงบของคุณ"} },
-    lily: { name:"ลิลลี่ขาว", latin:"Lilium candidum", emoji:"🪷", desc:"คุณมีความละเมียดละไม รักความสะอาด และมีความคิดที่บริสุทธิ์ คุณให้ความสำคัญกับความถูกต้องและความเป็นระเบียบ ชีวิตของคุณมักจะมีเป้าหมายที่ชัดเจนและมุ่งมั่นทำให้สำเร็จอย่างสง่างาม", match:{emoji:"🌹", name:"กุหลาบ", desc:"ความร้อนแรงของเขาจะช่วยกระตุ้นความหลงใหลในชีวิตให้คุณ"} }
+    lily: { name:"ลิลลี่ขาว", latin:"Lilium candidum", emoji:"🪷", desc:"คุณมีความละเมียดละไม รักความสะอาด และมีความคิดที่บริสุทธิ์ คุณให้ความสำคัญกับความถูกต้องและความเป็นระเบียบ ชีวิตของคุณมักจะมีเป้าหมายที่ชัดเจนและมุ่งมั่นทำให้สำเร็จอย่างสง่างาม", match:{emoji:"🌹", name:"กุหลาบ", desc:"ความร้อนแรงของเขาจะช่วยกระตุ้นความหลงใหลในชีวิตให้คุณ"} },
+    daisy: { name:"ดอกเดซี่", latin:"Bellis perennis", emoji:"🌼", desc:"คุณคือความบริสุทธิ์และความสดใสในรูปแบบที่เรียบง่ายที่สุด คุณเป็นคนมองโลกในแง่ดี เข้าถึงง่าย และมีความซื่อสัตย์ในความสัมพันธ์อย่างมาก ความสุขของคุณหาได้จากสิ่งเล็กๆ รอบตัว", match:{emoji:"🌷", name:"ทิวลิป", desc:"ความเข้าใจโลกของเขาจะช่วยเติมเต็มความฝันของคุณ"} },
+    hydra: { name:"ไฮเดรนเยีย", latin:"Hydrangea macrophylla", emoji:"💠", desc:"คุณเป็นคนอ่อนไหวและปรับตัวเก่งมาก คุณมีความเห็นอกเห็นใจที่สูงส่ง มักจะเปลี่ยนความรู้สึกไปตามสภาพแวดล้อมเพื่อสร้างความกลมกลืน คุณคือคนที่ทำให้คนอื่นรู้สึกว่าพวกเขาไม่ได้อยู่ลำพัง", match:{emoji:"🪷", name:"ลิลลี่ขาว", desc:"ความมั่นคงของเขาจะช่วยจัดระเบียบหัวใจที่อ่อนไหวของคุณ"} },
+    orchid: { name:"ดอกกล้วยไม้", latin:"Orchidaceae", emoji:"🪻", desc:"คุณมีความยูนีคและโดดเด่นในแบบของตัวเอง คุณรักความสมบูรณ์แบบและมีความคิดที่ลึกซึ้งเกินกว่าที่ใครจะคาดถึง คุณอาจจะดูนิ่งขรึมในตอนแรก แต่ถ้าใครได้รู้จักจะพบว่าคุณคือเพื่อนที่จริงใจที่สุด", match:{emoji:"🌻", name:"ทานตะวัน", desc:"ความสดใสของเขาจะช่วยดึงคุณออกมาจากโลกที่ซับซ้อน"} },
+    tulip: { name:"ดอกทิวลิป", latin:"Tulipa", emoji:"🌷", desc:"คุณคือตัวแทนของความรักที่พอดีและการเริ่มต้นใหม่ คุณมีความรอบคอบ สง่างามแบบเรียบง่าย และมักจะรู้วิธีการวางตัวให้เหมาะสมในทุกสถานการณ์ คุณเป็นคนมีรสนิยมและรักในอิสระ", match:{emoji:"🌼", name:"เดซี่", desc:"ความไร้เดียงสาของเขาจะทำให้คุณยิ้มได้กว้างกว่าเดิม"} }
 };
 
-let idx = 0, scores = {sun:0,rose:0,lav:0,lily:0}, history = [];
+let idx = 0, scores = {sun:0,rose:0,lav:0,lily:0,daisy:0,hydra:0,orchid:0,tulip:0}, history = [];
 
 function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -625,7 +624,7 @@ function showScreen(id) {
 }
 
 function startQuiz() {
-    idx = 0; scores = {sun:0,rose:0,lav:0,lily:0}; history = [];
+    idx = 0; scores = {sun:0,rose:0,lav:0,lily:0,daisy:0,hydra:0,orchid:0,tulip:0}; history = [];
     showScreen('screen-quiz');
     renderQ();
 }
@@ -652,14 +651,21 @@ function renderQ() {
         const b = document.createElement('button');
         b.className = 'opt-btn';
         b.textContent = opt.t;
-        b.onclick = () => { scores[opt.s]++; history.push({s:opt.s}); idx++; idx < questions.length ? renderQ() : showResult(); };
+        b.onclick = () => { 
+            scores[opt.s]++; 
+            history.push({s:opt.s}); 
+            idx++; 
+            idx < questions.length ? renderQ() : showResult(); 
+        };
         box.appendChild(b);
     });
 }
 
 function showResult() {
-    const winner = Object.entries(scores).sort((a,b) => b[1]-a[1])[0][0];
+    const sorted = Object.entries(scores).sort((a,b) => b[1]-a[1]);
+    const winner = sorted[0][0];
     const r = results[winner];
+    
     document.getElementById('res-emoji').textContent = r.emoji;
     document.getElementById('res-name').textContent = r.name;
     document.getElementById('res-latin').textContent = r.latin;
@@ -672,20 +678,21 @@ function showResult() {
 
 async function saveImage() {
     const btn = document.getElementById('save-btn');
-    btn.querySelector('span').textContent = 'กำลังสร้างรูปภาพ...';
+    const span = btn.querySelector('span');
+    span.textContent = 'กำลังสร้างรูปภาพ...';
     btn.disabled = true;
     try {
         const canvas = await html2canvas(document.getElementById('result-to-save'), {
             backgroundColor: '#faf7f2', scale: 3, useCORS: true, logging: false
         });
         const a = document.createElement('a');
-        a.download = 'floral-soul.png';
+        a.download = 'floral-soul-result.png';
         a.href = canvas.toDataURL('image/png');
         a.click();
-        showToast('✓  บันทึกรูปภาพเรียบร้อยแล้ว');
+        showToast('✓ บันทึกรูปภาพเรียบร้อยแล้ว');
     } catch(e) { console.error(e); }
     finally {
-        btn.querySelector('span').textContent = 'บันทึกและแชร์ผลลัพธ์';
+        span.textContent = 'บันทึกและแชร์ผลลัพธ์';
         btn.disabled = false;
     }
 }
